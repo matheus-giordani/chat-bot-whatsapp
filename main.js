@@ -5,7 +5,9 @@ const requestOpenAI = require('./request.js');
 
 const listGroups = process.env.GROUP_NAMES.split(',')
 
-const client = new Client({ authStrategy: new LocalAuth() });
+const client = new Client({ authStrategy: new LocalAuth(), puppeteer: {
+    args: ['--no-sandbox'],
+} });
 
 client.on('qr', qr => {
     qrcode.generate(qr, { small: true });
