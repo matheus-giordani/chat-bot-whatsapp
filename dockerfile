@@ -1,4 +1,4 @@
-FROM node:18-slim
+FROM node:18.16.0-slim
 
 # Install latest chrome dev package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others)
 # Note: this installs the necessary libs to make the bundled version of Chromium that Puppeteer
@@ -30,14 +30,8 @@ COPY ./ ./
 RUN npm ci \
     # Add user so we don't need --no-sandbox.
     # same layer as npm install to keep re-chowned files from using up several hundred MBs more space
-    && groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
-    && mkdir -p /home/pptruser/Downloads \
-    && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /node_modules \
-    && chown -R pptruser:pptruser /package.json \
-    && chown -R pptruser:pptruser /package-lock.json
+    
 
-# Run everything after as non-privileged user.
-USER pptruser
+
 
 CMD ["google-chrome-stable"]
