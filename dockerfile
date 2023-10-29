@@ -28,10 +28,4 @@ WORKDIR ${WORKDIR}
 # Install puppeteer so it's available in the container.
 COPY ./ ./
 RUN npm ci \
-    # Add user so we don't need --no-sandbox.
-    # same layer as npm install to keep re-chowned files from using up several hundred MBs more space
-    
-
-
-
 CMD ["google-chrome-stable"]
