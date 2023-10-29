@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  chat-bot-whatsapp:
+    container_name: chat-bot-whatsapp
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ./:./
+    command: >
+      npm start
+
+volumes:
+  data-chat-bot-whatsapp:
+    
