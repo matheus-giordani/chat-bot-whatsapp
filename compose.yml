@@ -5,14 +5,14 @@ services:
     container_name: chat-bot-whatsapp
     build: 
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     restart: always
     stdin_open: true
     init: true
     cap_add:
       - SYS_ADMIN
-    volumes:
-      - ./:/usr/chat-bot
+    # volumes:
+    #   - ./:/usr/chat-bot
     command: >
       sh -c "ls -a &&
       npm start"

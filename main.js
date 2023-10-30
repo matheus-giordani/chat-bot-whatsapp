@@ -1,4 +1,4 @@
-const qrcode = require('./node_modules/qrcode-terminal/lib/main.js');
+const qrcode = require('qrcode-terminal');
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const fs = require('fs');
 const requestOpenAI = require('./request.js');
