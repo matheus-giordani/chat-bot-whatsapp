@@ -11,11 +11,10 @@ services:
     init: true
     cap_add:
       - SYS_ADMIN
-    # volumes:
-    #   - ./:/usr/chat-bot
+    volumes:
+      - ./.wwebjs_auth:/usr/chat-bot/.wwebjs_auth
     command: >
-      sh -c "ls -a &&
+      sh -c "mkdir logs &&
       npm start"
-volumes:
-  data-chat-bot-whatsapp:
+
     
