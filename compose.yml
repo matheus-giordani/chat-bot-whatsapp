@@ -13,6 +13,7 @@ services:
       - SYS_ADMIN
     volumes:
       - ./.wwebjs_auth:/usr/chat-bot/.wwebjs_auth
+      - ./.wwebjs_cache:/usr/chat-bot/.wwebjs_cache
     command: >
       sh -c "mkdir logs &&
       npm start"

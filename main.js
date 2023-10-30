@@ -25,7 +25,7 @@ client.on('message', async message => {
     if (listGroups.includes(chat.name)) {
         fs.appendFileSync(`logs/${chat.name}.log`, `${new Date(message.timestamp * 1000)} - ${contact.name}: ${message.body}\n`)
 
-        if (chat.unreadCount >= 5) {
+        if (chat.unreadCount >= 20) {
             const file = fs.readFileSync(`logs/${chat.name}.log`, { encoding: 'utf8', flag: 'r' })
             requestOpenAI(file).then(async (response) => {
 
@@ -35,6 +35,7 @@ client.on('message', async message => {
                     .then(() => {
                         try {
                             fs.unlinkSync(`logs/${chat.name}.log`)
+                            chat.sendSeen();
                         }
                         catch (error) {
 
